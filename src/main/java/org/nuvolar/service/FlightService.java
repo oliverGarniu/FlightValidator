@@ -68,8 +68,8 @@ public class FlightService implements IFlightService {
         double longitude2 = sc.nextDouble();
 
         FlightInfo flight = new FlightInfo(flightNumber, localTime, passengers,
-                new DepartureLocation(latitude1, longitude1),
-                new ArrivalLocation(latitude2, longitude2));
+                new DepartureLocation(depLocation, latitude1, longitude1),
+                new ArrivalLocation(arrLocation, latitude2, longitude2));
 
         System.out.println(flight.toString());
 

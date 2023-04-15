@@ -2,15 +2,17 @@ package org.nuvolar.model;
 
 public class DepartureLocation {
 
+    private String depLocation;
     private double latitude1;
     private double longitude1;
 
-    public DepartureLocation(double latitude1, double longitude1) {
+    public DepartureLocation(String depLocation, double latitude1, double longitude1) {
+        this.depLocation = depLocation;
         this.latitude1 = latitude1;
         this.longitude1 = longitude1;
     }
 
-//    public double getLatitude1() {
+    //    public double getLatitude1() {
 //        return latitude1;
 //    }
 //
@@ -29,7 +31,8 @@ public class DepartureLocation {
     @Override
     public String toString() {
         return "DepartureLocation{" +
-                "latitude1=" + latitude1 +
+                "depLocation='" + depLocation + '\'' +
+                ", latitude1=" + latitude1 +
                 ", longitude1=" + longitude1 +
                 '}';
     }
