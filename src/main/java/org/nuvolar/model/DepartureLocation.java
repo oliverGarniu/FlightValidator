@@ -12,22 +12,6 @@ public class DepartureLocation {
         this.longitude1 = longitude1;
     }
 
-    //    public double getLatitude1() {
-//        return latitude1;
-//    }
-//
-//    public void setLatitude1(double latitude1) {
-//        this.latitude1 = latitude1;
-//    }
-//
-//    public double getLongitude1() {
-//        return longitude1;
-//    }
-//
-//    public void setLongitude1(double longitude1) {
-//        this.longitude1 = longitude1;
-//    }
-
     @Override
     public String toString() {
         return "DepartureLocation{" +

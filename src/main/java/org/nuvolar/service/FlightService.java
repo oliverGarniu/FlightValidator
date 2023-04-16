@@ -9,15 +9,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FlightService implements IFlightService {
     Scanner sc = new Scanner(System.in);
+    private final Logger logger = LoggerFactory.getLogger(FlightService.class);
 
     String flightNumber;
     LocalTime localTime;
     int passengers;
-//    private final Logger logger = LoggerFactory.getLogger(FlightService.class);
 
     @Override
     public String getFlightNumber() {
@@ -37,6 +38,7 @@ public class FlightService implements IFlightService {
                 localTime = LocalTime.parse(takeOffTime);
                 isCorrectTimeFormat = true;
             } catch (Exception e) {
+                System.out.println(e.getCause());
                 System.err.println("Time format should be HH:mm");
             }
         }
@@ -45,6 +47,7 @@ public class FlightService implements IFlightService {
 
     @Override
     public int getPassengers() {
+
         System.out.println("Enter number of passengers");
         passengers = sc.nextInt();
         return passengers;
@@ -53,6 +56,10 @@ public class FlightService implements IFlightService {
     @Override
     public double getDistance() {
 
+//        double flightDistance = 0;
+//        boolean isCorrectFormat = false;
+//        while (!isCorrectFormat) {
+//            try {
         System.out.println("Enter departure location");
         String depLocation = sc.next();
         System.out.println("Enter " + depLocation + "´s latitude");
@@ -67,15 +74,21 @@ public class FlightService implements IFlightService {
         System.out.println("Enter " + arrLocation + "´s longitude");
         double longitude2 = sc.nextDouble();
 
+//                isCorrectFormat = true;
+
         FlightInfo flight = new FlightInfo(flightNumber, localTime, passengers,
                 new DepartureLocation(depLocation, latitude1, longitude1),
                 new ArrivalLocation(arrLocation, latitude2, longitude2));
 
-        System.out.println(flight.toString());
+        System.out.println(flight);
 
         double flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
         System.out.printf("Distance between %s and %s = %.2f km.", depLocation, arrLocation, flightDistance);
-
+//            } catch (Exception e) {
+//                System.out.println(e.getCause());
+//                System.err.println("decimals for longitude and latitude should be a dot, not a comma");
+//            }
+//        }
         return flightDistance;
     }
 }
