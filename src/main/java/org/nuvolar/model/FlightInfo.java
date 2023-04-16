@@ -18,6 +18,26 @@ public class FlightInfo {
         this.arrivalLocation = arrivalLocation;
     }
 
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public LocalTime getTakeOffTime() {
+        return takeOffTime;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public DepartureLocation getDepartureLocation() {
+        return departureLocation;
+    }
+
+    public ArrivalLocation getArrivalLocation() {
+        return arrivalLocation;
+    }
+
     @Override
     public String toString() {
         return "Flight{" +
