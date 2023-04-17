@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FlightService implements IFlightService {
@@ -19,37 +18,50 @@ public class FlightService implements IFlightService {
     String flightNumber;
     LocalTime localTime;
     int passengers;
+    boolean isCorrectFormat;
 
     @Override
-    public String getFlightNumber() {
+    public String setFlightNumber() {
+
         System.out.println("Enter flight number");
         flightNumber = sc.next();
         return flightNumber;
     }
 
     @Override
-    public LocalTime getTakeOffTime() {
+    public LocalTime setTakeOffTime() {
 
-        boolean isCorrectTimeFormat = false;
-        while (!isCorrectTimeFormat) {
+        isCorrectFormat = false;
+        while (!isCorrectFormat) {
             try {
                 System.out.println("Enter take off time");
                 String takeOffTime = sc.next();
                 localTime = LocalTime.parse(takeOffTime);
-                isCorrectTimeFormat = true;
+                logger.info("Take off time: " + takeOffTime);
+                isCorrectFormat = true;
             } catch (Exception e) {
                 System.out.println(e.getCause());
                 System.err.println("Time format should be HH:mm");
+//                logger.warn("Time format should be HH:mm");
             }
         }
         return localTime;
     }
 
     @Override
-    public int getPassengers() {
+    public int setPassengers() {
 
-        System.out.println("Enter number of passengers");
-        passengers = sc.nextInt();
+//        isCorrectFormat = false;
+//        while (!isCorrectFormat) {
+//            try {
+                System.out.println("Enter number of passengers");
+                passengers = sc.nextInt();
+//                isCorrectFormat = true;
+//            } catch (Exception e) {
+//                System.out.println(e.getCause());
+//                System.err.println("You have not typed in a numerical value");
+//            }
+//        }
         return passengers;
     }
 
@@ -57,13 +69,27 @@ public class FlightService implements IFlightService {
     public double getDistance() {
 
 //        double flightDistance = 0;
+
+
+        System.out.println("Enter departure location");
+        String depLocation = sc.next();
+
 //        boolean isCorrectFormat = false;
 //        while (!isCorrectFormat) {
 //            try {
-        System.out.println("Enter departure location");
-        String depLocation = sc.next();
         System.out.println("Enter " + depLocation + "´s latitude");
         double latitude1 = sc.nextDouble();
+//                isCorrectFormat = true;
+//            }catch (Exception e) {
+//                System.out.println(e.getCause());
+//                System.err.println("You have not typed in a numerical value");
+//            }catch (NumberFormatException exception) {
+//
+//                System.out.println(exception.getCause());
+//                System.err.println("decimals for longitude and latitude should be a dot, not a comma");
+//            }
+
+//    }
         System.out.println("Enter " + depLocation + "´s longitude");
         double longitude1 = sc.nextDouble();
 
@@ -84,9 +110,7 @@ public class FlightService implements IFlightService {
 
         double flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
         System.out.printf("Distance between %s and %s = %.2f km.", depLocation, arrLocation, flightDistance);
-//            } catch (Exception e) {
-//                System.out.println(e.getCause());
-//                System.err.println("decimals for longitude and latitude should be a dot, not a comma");
+
 //            }
 //        }
         return flightDistance;

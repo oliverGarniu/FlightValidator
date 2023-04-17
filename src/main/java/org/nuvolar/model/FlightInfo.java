@@ -8,7 +8,7 @@ public class FlightInfo {
     private LocalTime takeOffTime;
     private int passengers;
     private DepartureLocation departureLocation;
-    private org.nuvolar.model.ArrivalLocation arrivalLocation;
+    private ArrivalLocation arrivalLocation;
 
     public FlightInfo(String flightNumber, LocalTime takeOffTime, int passengers, DepartureLocation departureLocation, ArrivalLocation arrivalLocation) {
         this.flightNumber = flightNumber;

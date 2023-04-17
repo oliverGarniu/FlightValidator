@@ -7,9 +7,17 @@ import java.time.LocalTime;
 
 public class FlightFeasibility implements IFlightFeasibility {
 
-    //TODO
-    @Autowired
-    FlightInfo flightInfo;
+
+    private double maxFlightRange;
+    private final int numPassengers = 250;
+    private int passengers;
+
+
+    FlightService flightService;
+
+    public FlightFeasibility(FlightService flightService) {
+        this.flightService = flightService;
+    }
 
     /**
      * rule 1: The maximum flight range of the airplane is 12.000 km, however,
@@ -21,9 +29,9 @@ public class FlightFeasibility implements IFlightFeasibility {
     @Override
     public boolean rule1(double flightDistance) {
 
-        int maxFlightRange = 12000;
-        final int numPassengers = 250;
-        int passengers = flightInfo.getPassengers();
+        maxFlightRange = 12000;
+//        final int numPassengers = 250;
+        passengers = flightService.passengers;
 
         if (passengers > numPassengers) {
             maxFlightRange = 8000;
@@ -41,14 +49,16 @@ public class FlightFeasibility implements IFlightFeasibility {
     @Override
     public boolean rule2(double flightDistance) {
 
-        int maxFlightRange = 12000;
+//        int maxFlightRange;
         LocalTime time = LocalTime.parse("14:00");
         LocalTime limitTakeOffTime = LocalTime.parse("20:00");
-        LocalTime takeOffTime = flightInfo.getTakeOffTime();
+        LocalTime takeOffTime = flightService.localTime;
         boolean isTakeOffTimeAfterLimit = false;
 
-        if (takeOffTime.isAfter(time)) {
+
+        if (takeOffTime.isAfter(time) && passengers < numPassengers) {
             maxFlightRange = 9000;
+
         }
 
         if (takeOffTime.isAfter(limitTakeOffTime)) {
@@ -58,12 +68,14 @@ public class FlightFeasibility implements IFlightFeasibility {
         return flightDistance <= maxFlightRange && !isTakeOffTimeAfterLimit ? true : false;
     }
 
-    public String checkFeasibility(double flightDistance) {
+    public void checkFeasibility(double flightDistance) {
 
-        String flight = "Flight number " + flightInfo.getFlightNumber();
+        String flight = "\nFlight number " + flightService.flightNumber;
+//        System.out.println(flight);  // checkpointing
         boolean isRule1 = rule1(flightDistance);
         boolean isRule2 = rule2(flightDistance);
 
-        return isRule1 && isRule2 ? flight + " IS FEASIBLE" : flight + " IS NOT FEASIBLE!!";
+        String result = isRule1 && isRule2 ? flight + " IS FEASIBLE" : flight + " IS NOT FEASIBLE!!";
+        System.out.println(result);
     }
 }

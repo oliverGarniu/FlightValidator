@@ -4,8 +4,8 @@ import java.time.LocalTime;
 
 public interface IFlightService {
 
-    String getFlightNumber();
-    LocalTime getTakeOffTime();
-    int getPassengers();
+    String setFlightNumber();
+    LocalTime setTakeOffTime();
+    int setPassengers();
     double getDistance();
 }
