@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FlightService implements IFlightService {
@@ -25,6 +26,7 @@ public class FlightService implements IFlightService {
 
         System.out.println("Enter flight number");
         flightNumber = sc.next();
+        logger.info("Flight number: " + flightNumber);
         return flightNumber;
     }
 
@@ -40,8 +42,9 @@ public class FlightService implements IFlightService {
                 logger.info("Take off time: " + takeOffTime);
                 isCorrectFormat = true;
             } catch (Exception e) {
-                System.out.println(e.getCause());
                 System.err.println("Time format should be HH:mm");
+                System.out.println(e.getCause());
+//                sc.next();
 //                logger.warn("Time format should be HH:mm");
             }
         }
@@ -51,68 +54,78 @@ public class FlightService implements IFlightService {
     @Override
     public int setPassengers() {
 
-//        isCorrectFormat = false;
-//        while (!isCorrectFormat) {
-//            try {
+        isCorrectFormat = false;
+        while (!isCorrectFormat) {
+            try {
                 System.out.println("Enter number of passengers");
                 passengers = sc.nextInt();
-//                isCorrectFormat = true;
-//            } catch (Exception e) {
-//                System.out.println(e.getCause());
-//                System.err.println("You have not typed in a numerical value");
-//            }
-//        }
+                logger.info("Number of passengers: " + passengers);
+                isCorrectFormat = true;
+            } catch (Exception e) {
+                System.err.println("You have not typed in a numerical value");
+                System.out.println(e.getCause());
+                sc.next();
+            }
+        }
         return passengers;
     }
+}
 
-    @Override
-    public double getDistance() {
-
-//        double flightDistance = 0;
-
-
-        System.out.println("Enter departure location");
-        String depLocation = sc.next();
-
+//    @Override
+//    public double getDistance() {
+//
+////        double flightDistance = 0;
+//
+//
+//        System.out.println("Enter departure location");
+//        String depLocation = sc.next();
+//
 //        boolean isCorrectFormat = false;
 //        while (!isCorrectFormat) {
 //            try {
-        System.out.println("Enter " + depLocation + "´s latitude");
-        double latitude1 = sc.nextDouble();
+//                System.out.println("Enter " + depLocation + "´s latitude");
+//                double latitude1 = sc.nextDouble();
+//                logger.info(depLocation + "´s latitude: " + latitude1);
 //                isCorrectFormat = true;
-//            }catch (Exception e) {
+//            } catch (InputMismatchException e) {
+//                System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
 //                System.out.println(e.getCause());
-//                System.err.println("You have not typed in a numerical value");
-//            }catch (NumberFormatException exception) {
+//                sc.next(); //******** limpiar scanner
+////            } catch (NumberFormatException exception) {
+////
+////                System.out.println(exception.getCause());
+////                System.err.println("decimals for longitude and latitude should be a dot, not a comma");
+////            }
+////
+//////    }
+//                System.out.println("Enter " + depLocation + "´s longitude");
+//                double longitude1 = sc.nextDouble();
 //
-//                System.out.println(exception.getCause());
-//                System.err.println("decimals for longitude and latitude should be a dot, not a comma");
-//            }
-
-//    }
-        System.out.println("Enter " + depLocation + "´s longitude");
-        double longitude1 = sc.nextDouble();
-
-        System.out.println("Enter arrival location");
-        String arrLocation = sc.next();
-        System.out.println("Enter " + arrLocation + "´s latitude");
-        double latitude2 = sc.nextDouble();
-        System.out.println("Enter " + arrLocation + "´s longitude");
-        double longitude2 = sc.nextDouble();
-
-//                isCorrectFormat = true;
-
-        FlightInfo flight = new FlightInfo(flightNumber, localTime, passengers,
-                new DepartureLocation(depLocation, latitude1, longitude1),
-                new ArrivalLocation(arrLocation, latitude2, longitude2));
-
-        System.out.println(flight);
-
-        double flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
-        System.out.printf("Distance between %s and %s = %.2f km.", depLocation, arrLocation, flightDistance);
-
+//                System.out.println("Enter arrival location");
+//                String arrLocation = sc.next();
+//                System.out.println("Enter " + arrLocation + "´s latitude");
+//                double latitude2 = sc.nextDouble();
+//                System.out.println("Enter " + arrLocation + "´s longitude");
+//                double longitude2 = sc.nextDouble();
+////
+//////                isCorrectFormat = true;
+////
+////            FlightInfo flight = new FlightInfo(flightNumber, localTime, passengers,
+////                    new DepartureLocation(depLocation, latitude1, longitude1),
+////                    new ArrivalLocation(arrLocation, latitude2, longitude2));
+//
+////            System.out.println(flight);
+////
+////            double flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
+////            System.out.printf("Distance between %s and %s = %.2f km.", depLocation, arrLocation, flightDistance);
+//
+//////            }
+//////        }
+////            return flightDistance;
+////    }
+////                return latitude1;
 //            }
 //        }
-        return flightDistance;
-    }
-}
+//        return 0;
+//    }
+//}

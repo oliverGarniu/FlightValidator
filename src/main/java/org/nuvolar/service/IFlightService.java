@@ -7,5 +7,5 @@ public interface IFlightService {
     String setFlightNumber();
     LocalTime setTakeOffTime();
     int setPassengers();
-    double getDistance();
+//    double getDistance();
 }
