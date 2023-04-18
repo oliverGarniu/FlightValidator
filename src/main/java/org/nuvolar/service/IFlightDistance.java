@@ -1,6 +1,7 @@
 package org.nuvolar.service;
 
 public interface IFlightDistance {
+
     String setDepartureLocation();
     double setDepartureLatitude();
     double setDepartureLongitude();

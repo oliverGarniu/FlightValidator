@@ -1,15 +1,10 @@
 package org.nuvolar;
 
-//import org.nuvolar.model.FlightInfo;
-//import org.nuvolar.service.FlightDistance;
-
 import org.nuvolar.service.FlightDistance;
 import org.nuvolar.service.FlightFeasibility;
 import org.nuvolar.service.FlightService;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
 
@@ -22,7 +17,6 @@ public class Main {
         flightService.setFlightNumber();
         flightService.setTakeOffTime();
         flightService.setPassengers();
-//        double distance = flightService.getDistance();
 
         flightDistance.setDepartureLocation();
         flightDistance.setDepartureLatitude();

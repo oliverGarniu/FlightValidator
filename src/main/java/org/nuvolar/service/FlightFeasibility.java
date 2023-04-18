@@ -1,17 +1,12 @@
 package org.nuvolar.service;
 
-import org.nuvolar.model.FlightInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalTime;
 
 public class FlightFeasibility implements IFlightFeasibility {
 
-
     private double maxFlightRange;
     private final int numPassengers = 250;
     private int passengers;
-
 
     FlightService flightService;
 
@@ -30,7 +25,6 @@ public class FlightFeasibility implements IFlightFeasibility {
     public boolean rule1(double flightDistance) {
 
         maxFlightRange = 12000;
-//        final int numPassengers = 250;
         passengers = flightService.passengers;
 
         if (passengers > numPassengers) {
@@ -49,16 +43,13 @@ public class FlightFeasibility implements IFlightFeasibility {
     @Override
     public boolean rule2(double flightDistance) {
 
-//        int maxFlightRange;
         LocalTime time = LocalTime.parse("14:00");
         LocalTime limitTakeOffTime = LocalTime.parse("20:00");
         LocalTime takeOffTime = flightService.localTime;
         boolean isTakeOffTimeAfterLimit = false;
 
-
         if (takeOffTime.isAfter(time) && passengers < numPassengers) {
             maxFlightRange = 9000;
-
         }
 
         if (takeOffTime.isAfter(limitTakeOffTime)) {
@@ -70,12 +61,14 @@ public class FlightFeasibility implements IFlightFeasibility {
 
     public void checkFeasibility(double flightDistance) {
 
-        String flight = "\nFlight number " + flightService.flightNumber;
-//        System.out.println(flight);  // checkpointing
+        String flight = "Flight number " + flightService.flightNumber;
         boolean isRule1 = rule1(flightDistance);
         boolean isRule2 = rule2(flightDistance);
 
         String result = isRule1 && isRule2 ? flight + " IS FEASIBLE" : flight + " IS NOT FEASIBLE!!";
+
+        System.out.println("\n" + "*".repeat(result.length()));
         System.out.println(result);
+        System.out.println("*".repeat(result.length()));
     }
 }
