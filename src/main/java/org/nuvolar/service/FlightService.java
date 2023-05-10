@@ -40,7 +40,6 @@ public class FlightService implements IFlightService {
                 System.out.println(e.getCause());
             }
         }
-
         return localTime;
     }
 
@@ -61,7 +60,6 @@ public class FlightService implements IFlightService {
                 sc.next();
             }
         }
-
         return passengers;
     }
 }

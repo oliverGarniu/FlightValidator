@@ -28,8 +28,8 @@ public class FlightDistance implements IFlightDistance {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter departure location");
-        depLocation = sc.next();
-        logger.info("Departure location: " + depLocation);
+        depLocation = sc.nextLine();
+        logger.info("Departure location: " + depLocation.toUpperCase());
         return depLocation;
     }
 
@@ -40,9 +40,9 @@ public class FlightDistance implements IFlightDistance {
 
         while (!isCorrectFormat) {
             try {
-                System.out.println("Enter " + depLocation + "´s latitude");
+                System.out.println("Enter " + depLocation.toUpperCase() + "´s latitude");
                 latitude1 = sc.nextDouble();
-                logger.info(depLocation + "´s latitude: " + latitude1);
+                logger.info(depLocation.toUpperCase() + "´s latitude: " + latitude1);
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
@@ -60,9 +60,9 @@ public class FlightDistance implements IFlightDistance {
 
         while (!isCorrectFormat) {
             try {
-                System.out.println("Enter " + depLocation + "´s longitude");
+                System.out.println("Enter " + depLocation.toUpperCase() + "´s longitude");
                 longitude1 = sc.nextDouble();
-                logger.info(depLocation + "´s longitude: " + longitude1);
+                logger.info(depLocation.toUpperCase() + "´s longitude: " + longitude1);
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
@@ -78,8 +78,8 @@ public class FlightDistance implements IFlightDistance {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter arrival location");
-        arrLocation = sc.next();
-        logger.info("Arrival location: " + arrLocation);
+        arrLocation = sc.nextLine();
+        logger.info("Arrival location: " + arrLocation.toUpperCase());
         return arrLocation;
     }
 
@@ -92,7 +92,7 @@ public class FlightDistance implements IFlightDistance {
             try {
                 System.out.println("Enter " + arrLocation + "´s latitude");
                 latitude2 = sc.nextDouble();
-                logger.info(arrLocation + "´s latitude: " + latitude2);
+                logger.info(arrLocation.toUpperCase() + "´s latitude: " + latitude2);
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
@@ -112,7 +112,7 @@ public class FlightDistance implements IFlightDistance {
             try {
                 System.out.println("Enter " + arrLocation + "´s longitude");
                 longitude2 = sc.nextDouble();
-                logger.info(arrLocation + "´s longitude: " + longitude2);
+                logger.info(arrLocation.toUpperCase() + "´s longitude: " + longitude2);
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
@@ -133,7 +133,8 @@ public class FlightDistance implements IFlightDistance {
         System.out.println(flight);
 
         double flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
-        System.out.printf("Distance between %s and %s = %.2f km.", depLocation, arrLocation, flightDistance);
+        System.out.printf("\nDistance between %s and %s = %.2f km.\n",
+                depLocation.toUpperCase(), arrLocation.toUpperCase(), flightDistance);
 
         return flightDistance;
     }

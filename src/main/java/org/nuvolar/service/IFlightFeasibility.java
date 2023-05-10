@@ -11,6 +11,6 @@ public interface IFlightFeasibility {
      *         - And there shall be no take-offs after 8:00 pm.
      */
 
-    boolean rule1(double flightDistance);
-    boolean rule2(double flightDistance);
+    boolean evaluateRule1(double flightDistance);
+    boolean evaluateRule2(double flightDistance);
 }

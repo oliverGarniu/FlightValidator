@@ -4,10 +4,10 @@ import java.time.LocalTime;
 
 public class FlightFeasibility implements IFlightFeasibility {
 
-    private double maxFlightRange;
-    private final int numPassengers = 250;
-    private int passengers;
-
+    double maxFlightRange;
+    final int numPassengers = 250;
+    int passengers;
+    String flight;
     FlightService flightService;
 
     public FlightFeasibility(FlightService flightService) {
@@ -22,13 +22,19 @@ public class FlightFeasibility implements IFlightFeasibility {
      * @return boolean
      */
     @Override
-    public boolean rule1(double flightDistance) {
+    public boolean evaluateRule1(double flightDistance) {
 
         maxFlightRange = 12000;
         passengers = flightService.passengers;
+        flight = "Flight number " + flightService.flightNumber;
 
         if (passengers > numPassengers) {
             maxFlightRange = 8000;
+        }
+
+        if (flightDistance > maxFlightRange) {
+            System.out.printf("%s IS NOT FEASIBLE, flight distance: %.2f is greater than max flight range: %.2f",
+                    flight, flightDistance, maxFlightRange);
         }
 
         return flightDistance <= maxFlightRange ? true : false;
@@ -41,8 +47,9 @@ public class FlightFeasibility implements IFlightFeasibility {
      * @return boolean
      */
     @Override
-    public boolean rule2(double flightDistance) {
+    public boolean evaluateRule2(double flightDistance) {
 
+        flight = "Flight number " + flightService.flightNumber;
         LocalTime time = LocalTime.parse("14:00");
         LocalTime limitTakeOffTime = LocalTime.parse("20:00");
         LocalTime takeOffTime = flightService.localTime;
@@ -53,6 +60,8 @@ public class FlightFeasibility implements IFlightFeasibility {
         }
 
         if (takeOffTime.isAfter(limitTakeOffTime)) {
+            System.out.println("\nTake off time: " + takeOffTime);
+            System.out.println(flight + " IS NOT FEASIBLE, take off time after " + limitTakeOffTime);
             isTakeOffTimeAfterLimit = true;
         }
 
@@ -61,9 +70,8 @@ public class FlightFeasibility implements IFlightFeasibility {
 
     public void checkFeasibility(double flightDistance) {
 
-        String flight = "Flight number " + flightService.flightNumber;
-        boolean isRule1 = rule1(flightDistance);
-        boolean isRule2 = rule2(flightDistance);
+        boolean isRule1 = evaluateRule1(flightDistance);
+        boolean isRule2 = evaluateRule2(flightDistance);
 
         String result = isRule1 && isRule2 ? flight + " IS FEASIBLE" : flight + " IS NOT FEASIBLE!!";
 
