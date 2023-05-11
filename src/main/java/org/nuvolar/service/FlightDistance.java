@@ -1,7 +1,6 @@
 package org.nuvolar.service;
 
-import org.nuvolar.model.ArrivalLocation;
-import org.nuvolar.model.DepartureLocation;
+import org.nuvolar.model.AirportLocation;
 import org.nuvolar.model.FlightInfo;
 import org.nuvolar.util.Haversine;
 
@@ -127,8 +126,7 @@ public class FlightDistance implements IFlightDistance {
     public double getDistance() {
 
         FlightInfo flight = new FlightInfo(flightService.flightNumber, flightService.localTime, flightService.passengers,
-                new DepartureLocation(depLocation, latitude1, longitude1),
-                new ArrivalLocation(arrLocation, latitude2, longitude2));
+                new AirportLocation(depLocation, latitude1, longitude1, arrLocation, latitude2, longitude2));
 
         System.out.println(flight);
 
