@@ -39,7 +39,7 @@ public class FlightDistance implements IFlightDistance {
 
         while (!isCorrectFormat) {
             try {
-                System.out.println("Enter " + depLocation.toUpperCase() + "´s latitude");
+                System.out.println("Enter " + depLocation.toUpperCase() + " airport´s latitude");
                 latitude1 = sc.nextDouble();
                 logger.info(depLocation.toUpperCase() + "´s latitude: " + latitude1);
                 isCorrectFormat = true;
@@ -59,7 +59,7 @@ public class FlightDistance implements IFlightDistance {
 
         while (!isCorrectFormat) {
             try {
-                System.out.println("Enter " + depLocation.toUpperCase() + "´s longitude");
+                System.out.println("Enter " + depLocation.toUpperCase() + " airport´s longitude");
                 longitude1 = sc.nextDouble();
                 logger.info(depLocation.toUpperCase() + "´s longitude: " + longitude1);
                 isCorrectFormat = true;
@@ -89,7 +89,7 @@ public class FlightDistance implements IFlightDistance {
 
         while (!isCorrectFormat) {
             try {
-                System.out.println("Enter " + arrLocation + "´s latitude");
+                System.out.println("Enter " + arrLocation.toUpperCase() + " airport´s latitude");
                 latitude2 = sc.nextDouble();
                 logger.info(arrLocation.toUpperCase() + "´s latitude: " + latitude2);
                 isCorrectFormat = true;
@@ -109,7 +109,7 @@ public class FlightDistance implements IFlightDistance {
 
         while (!isCorrectFormat) {
             try {
-                System.out.println("Enter " + arrLocation + "´s longitude");
+                System.out.println("Enter " + arrLocation.toUpperCase() + " airport´s longitude");
                 longitude2 = sc.nextDouble();
                 logger.info(arrLocation.toUpperCase() + "´s longitude: " + longitude2);
                 isCorrectFormat = true;

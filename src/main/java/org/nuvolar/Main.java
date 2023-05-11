@@ -1,8 +1,6 @@
 package org.nuvolar;
 
-import org.nuvolar.service.FlightDistance;
-import org.nuvolar.service.FlightFeasibility;
-import org.nuvolar.service.FlightService;
+import org.nuvolar.service.*;
 import org.springframework.boot.SpringApplication;
 
 public class Main {
@@ -11,21 +9,14 @@ public class Main {
         SpringApplication.run(Main.class, args);
 
         FlightService flightService = new FlightService();
-        FlightFeasibility flightFeasibility = new FlightFeasibility(flightService);
+        FlightFeasibilityRule1 flightFeasibilityRule1 = new FlightFeasibilityRule1(flightService);
+        FlightFeasibilityRule2 flightFeasibilityRule2 = new FlightFeasibilityRule2(flightService);
+        FeasibilityMessage feasibilityMessage = new FeasibilityMessage(flightService, flightFeasibilityRule1, flightFeasibilityRule2);
         FlightDistance flightDistance = new FlightDistance(flightService);
+        FeasibilityData feasibilityData = new FeasibilityData(flightFeasibilityRule1, flightFeasibilityRule2, feasibilityMessage);
 
-        flightService.setFlightNumber();
-        flightService.setTakeOffTime();
-        flightService.setPassengers();
+        double distance = new FlightData(flightService, flightDistance).SetFlightInfo();
 
-        flightDistance.setDepartureLocation();
-        flightDistance.setDepartureLatitude();
-        flightDistance.setDepartureLongitude();
-        flightDistance.setArrivalLocation();
-        flightDistance.setArrivalLatitude();
-        flightDistance.setArrivalLongitude();
-        double distance = flightDistance.getDistance();
-
-        flightFeasibility.checkFeasibility(distance);
+        feasibilityData.checkFeasibility(distance);
     }
 }

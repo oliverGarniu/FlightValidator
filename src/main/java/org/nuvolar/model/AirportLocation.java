@@ -7,9 +7,9 @@ public class AirportLocation {
 
     public AirportLocation(String depLocation, double latitude1, double longitude1, String arrLocation, double latitude2, double longitude2) {
         this.depLocation = depLocation;
-        this.arrLocation = arrLocation;
         this.latitude1 = latitude1;
         this.longitude1 = longitude1;
+        this.arrLocation = arrLocation;
         this.latitude2 = latitude2;
         this.longitude2 = longitude2;
     }
@@ -18,9 +18,9 @@ public class AirportLocation {
     public String toString() {
         return "AirportLocation{" +
                 "depLocation='" + depLocation + '\'' +
-                ", arrLocation='" + arrLocation + '\'' +
                 ", latitude1=" + latitude1 +
                 ", longitude1=" + longitude1 +
+                ", arrLocation='" + arrLocation + '\'' +
                 ", latitude2=" + latitude2 +
                 ", longitude2=" + longitude2 +
                 '}';

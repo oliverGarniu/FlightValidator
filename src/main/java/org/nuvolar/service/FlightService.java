@@ -47,7 +47,6 @@ public class FlightService implements IFlightService {
     public int setPassengers() {
 
         isCorrectFormat = false;
-
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter number of passengers");

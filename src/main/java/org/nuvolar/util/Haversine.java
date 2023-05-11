@@ -1,5 +1,9 @@
 package org.nuvolar.util;
 
+/**
+ * Haversine formula is used to calculate the distance between airports,
+ * given the latitudes and longitudes from the departure and arrival airports.
+ */
 public class Haversine {
 
     static final int R = 6371;
