@@ -11,7 +11,7 @@ public class Main {
         FlightService flightService = new FlightService();
         FlightFeasibilityRule1 flightFeasibilityRule1 = new FlightFeasibilityRule1(flightService);
         FlightFeasibilityRule2 flightFeasibilityRule2 = new FlightFeasibilityRule2(flightService);
-        FeasibilityMessage feasibilityMessage = new FeasibilityMessage(flightService, flightFeasibilityRule1, flightFeasibilityRule2);
+        FeasibilityMessage feasibilityMessage = new FeasibilityMessage(flightService);
         FlightDistance flightDistance = new FlightDistance(flightService);
         FeasibilityData feasibilityData = new FeasibilityData(flightFeasibilityRule1, flightFeasibilityRule2, feasibilityMessage);
 

@@ -13,8 +13,8 @@ public class FeasibilityData {
     }
 
     public void checkFeasibility(double distance) {
-        flightFeasibilityRule1.evaluateRule(distance);
-        flightFeasibilityRule2.evaluateRule(distance);
-        feasibilityMessage.checkFeasibility(distance);
+        boolean isRule1 = flightFeasibilityRule1.evaluateRule(distance);
+        boolean isRule2 = flightFeasibilityRule2.evaluateRule(distance);
+        feasibilityMessage.getFeasibilityMessage(isRule1, isRule2);
     }
 }
