@@ -32,4 +32,9 @@ public class FlightFeasibilityRule1 implements IFlightFeasibility {
 
         return flightDistance <= maxFlightRange;
     }
+
+    public double getMaxFlightRange() {
+
+        return maxFlightRange;
+    }
 }

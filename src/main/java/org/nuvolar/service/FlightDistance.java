@@ -14,7 +14,7 @@ public class FlightDistance implements IFlightDistance {
 
     private final Logger logger = LoggerFactory.getLogger(FlightService.class);
     String depLocation, arrLocation;
-    double latitude1, longitude1, latitude2, longitude2;
+    double latitude1, longitude1, latitude2, longitude2, flightDistance;
     boolean isCorrectFormat = false;
     FlightService flightService;
 
@@ -130,10 +130,14 @@ public class FlightDistance implements IFlightDistance {
 
         System.out.println(flight);
 
-        double flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
+        flightDistance = Haversine.getDistance(latitude1, longitude1, latitude2, longitude2);
         System.out.printf("\nDistance between %s and %s = %.2f km.\n",
                 depLocation.toUpperCase(), arrLocation.toUpperCase(), flightDistance);
 
+        return flightDistance;
+    }
+
+    public double getFlightDistance() {
         return flightDistance;
     }
 }

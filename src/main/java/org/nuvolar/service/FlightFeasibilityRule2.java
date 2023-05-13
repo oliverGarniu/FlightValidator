@@ -13,9 +13,11 @@ public class FlightFeasibilityRule2 implements IFlightFeasibility {
     LocalTime limitTakeOffTime = LocalTime.parse("20:00");
 
     FlightService flightService;
+    FlightFeasibilityRule1 flightFeasibilityRule1;
 
-    public FlightFeasibilityRule2(FlightService flightService) {
+    public FlightFeasibilityRule2(FlightService flightService, FlightFeasibilityRule1 flightFeasibilityRule1) {
         this.flightService = flightService;
+        this.flightFeasibilityRule1 = flightFeasibilityRule1;
     }
 
     /**
@@ -27,26 +29,31 @@ public class FlightFeasibilityRule2 implements IFlightFeasibility {
     @Override
     public boolean evaluateRule(double flightDistance) {
 
+        maxFlightRange = flightFeasibilityRule1.getMaxFlightRange();
         passengers = flightService.passengers;
         flight = "Flight number " + flightService.flightNumber;
         takeOffTime = flightService.localTime;
         boolean isTakeOffTimeAfterLimit = false;
 
-        if (takeOffTime.isAfter(time) && passengers < numPassengers) {
+        if (takeOffTime.isAfter(time) && takeOffTime.isBefore(limitTakeOffTime) && passengers < numPassengers) {
             maxFlightRange = 9000;
         }
 
-        if (flightDistance > maxFlightRange) {
-            System.out.printf("%s IS NOT FEASIBLE, flight distance: %.2f is greater than max flight range: %.2f\n",
-                    flight, flightDistance, maxFlightRange);
-        }
-
+//        if (flightDistance > maxFlightRange) {
+//            System.out.printf("%s IS NOT FEASIBLE, flight distance: %.2f is greater than max flight range: %.2f\n",
+//                    flight, flightDistance, maxFlightRange);
+//        }
+//
         if (takeOffTime.isAfter(limitTakeOffTime)) {
-            System.out.println("\nTake off time: " + flightService.localTime);
-            System.out.println(flight + " IS NOT FEASIBLE, take off time after " + limitTakeOffTime);
+//            System.out.println("\nTake off time: " + flightService.localTime);
+//            System.out.println(flight + " IS NOT FEASIBLE, take off time after " + limitTakeOffTime);
             isTakeOffTimeAfterLimit = true;
         }
 
         return flightDistance <= maxFlightRange && !isTakeOffTimeAfterLimit;
+    }
+
+    public double getMaxFlightRange() {
+        return maxFlightRange;
     }
 }
