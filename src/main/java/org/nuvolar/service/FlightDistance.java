@@ -29,6 +29,7 @@ public class FlightDistance implements IFlightDistance {
         System.out.println("Enter departure location");
         depLocation = sc.nextLine();
         logger.info("Departure location: " + depLocation.toUpperCase());
+
         return depLocation;
     }
 
@@ -45,10 +46,10 @@ public class FlightDistance implements IFlightDistance {
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
-                System.out.println(e.getCause());
                 sc.next();
             }
         }
+
         return latitude1;
     }
 
@@ -65,10 +66,10 @@ public class FlightDistance implements IFlightDistance {
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
-                System.out.println(e.getCause());
                 sc.next();
             }
         }
+
         return longitude1;
     }
 
@@ -79,6 +80,7 @@ public class FlightDistance implements IFlightDistance {
         System.out.println("Enter arrival location");
         arrLocation = sc.nextLine();
         logger.info("Arrival location: " + arrLocation.toUpperCase());
+
         return arrLocation;
     }
 
@@ -95,10 +97,10 @@ public class FlightDistance implements IFlightDistance {
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
-                System.out.println(e.getCause());
                 sc.next();
             }
         }
+
         return latitude2;
     }
 
@@ -115,10 +117,10 @@ public class FlightDistance implements IFlightDistance {
                 isCorrectFormat = true;
             } catch (InputMismatchException e) {
                 System.err.println("The input should be a number. If it has decimals it should be typed in with a dot, not a comma.");
-                System.out.println(e.getCause());
                 sc.next();
             }
         }
+
         return longitude2;
     }
 
@@ -138,6 +140,7 @@ public class FlightDistance implements IFlightDistance {
     }
 
     public double getFlightDistance() {
+
         return flightDistance;
     }
 }

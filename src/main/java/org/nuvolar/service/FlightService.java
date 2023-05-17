@@ -21,6 +21,7 @@ public class FlightService implements IFlightService {
         System.out.println("Enter flight number");
         flightNumber = sc.next();
         logger.info("Flight number: " + flightNumber);
+
         return flightNumber;
     }
 
@@ -37,9 +38,9 @@ public class FlightService implements IFlightService {
                 isCorrectFormat = true;
             } catch (Exception e) {
                 System.err.println("Time format should be HH:mm");
-                System.out.println(e.getCause());
             }
         }
+
         return localTime;
     }
 
@@ -55,10 +56,10 @@ public class FlightService implements IFlightService {
                 isCorrectFormat = true;
             } catch (Exception e) {
                 System.err.println("You have not typed in a numerical value");
-                System.out.println(e.getCause());
                 sc.next();
             }
         }
+
         return passengers;
     }
 }

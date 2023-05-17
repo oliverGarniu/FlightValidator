@@ -30,10 +30,7 @@ public class FeasibilityMessage {
         if (takeOffTime.isAfter(limitTakeOffTime)) {
             System.out.println("\nTake off time: " + flightService.localTime);
             System.out.println(flight + " IS NOT FEASIBLE, take off time after " + limitTakeOffTime);
-//            isTakeOffTimeAfterLimit = true;
         }
-
-//        String flight = "Flight number " + flightService.flightNumber;
 
         String result = isRule1 && isRule2 ? flight + " IS FEASIBLE" : flight + " IS NOT FEASIBLE!!";
 

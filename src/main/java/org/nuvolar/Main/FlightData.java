@@ -1,4 +1,7 @@
-package org.nuvolar.service;
+package org.nuvolar.Main;
+
+import org.nuvolar.service.FlightDistance;
+import org.nuvolar.service.FlightService;
 
 public class FlightData {
     FlightService flightService;
@@ -9,7 +12,7 @@ public class FlightData {
         this.flightDistance = flightDistance;
     }
 
-    public double SetFlightInfo() {
+    public double setFlightInfo() {
 
         flightService.setFlightNumber();
         flightService.setTakeOffTime();

@@ -1,4 +1,4 @@
-package org.nuvolar;
+package org.nuvolar.Main;
 
 import org.nuvolar.service.*;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ public class Main {
         FeasibilityMessage feasibilityMessage = new FeasibilityMessage(flightService, flightDistance, flightFeasibilityRule2);
         FeasibilityData feasibilityData = new FeasibilityData(flightFeasibilityRule1, flightFeasibilityRule2, feasibilityMessage);
 
-        double distance = new FlightData(flightService, flightDistance).SetFlightInfo();
+        double distance = new FlightData(flightService, flightDistance).setFlightInfo();
 
         feasibilityData.checkFeasibility(distance);
     }
