@@ -14,6 +14,13 @@ public class FeasibilityMessage {
         this.flightFeasibilityRule2 = flightFeasibilityRule2;
     }
 
+    /**
+     * This method allows you to get whether the flight is feasible or not,
+     * and if it is not feasible also displays the reason why it is unfeasible.
+     *
+     * @param isRule1
+     * @param isRule2
+     */
     public void getFeasibilityMessage(boolean isRule1, boolean isRule2) {
 
         double maxFlightRange = flightFeasibilityRule2.getMaxFlightRange();

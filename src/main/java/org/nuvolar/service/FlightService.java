@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.time.LocalTime;
 import java.util.Scanner;
 
+/**
+ * This class allows to set the flight number, take off time and number of passengers.
+ */
 public class FlightService implements IFlightService {
     Scanner sc = new Scanner(System.in);
     private final Logger logger = LoggerFactory.getLogger(FlightService.class);
@@ -29,6 +32,8 @@ public class FlightService implements IFlightService {
     public LocalTime setTakeOffTime() {
 
         isCorrectFormat = false;
+
+        // Using try-catch to handle input exceptions.
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter take off time");
@@ -37,6 +42,7 @@ public class FlightService implements IFlightService {
                 logger.info("Take off time: " + takeOffTime);
                 isCorrectFormat = true;
             } catch (Exception e) {
+                // If an incorrect time format is entered then an error message will be displayed.
                 System.err.println("Time format should be HH:mm");
             }
         }
@@ -48,6 +54,8 @@ public class FlightService implements IFlightService {
     public int setPassengers() {
 
         isCorrectFormat = false;
+
+        // Using try-catch to handle input exceptions.
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter number of passengers");

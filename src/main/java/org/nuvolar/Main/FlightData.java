@@ -12,6 +12,11 @@ public class FlightData {
         this.flightDistance = flightDistance;
     }
 
+    /**
+     * This method allows setting the flight data and getting the flight distance.
+     *
+     * @return distance between departure and arrival location
+     */
     public double setFlightInfo() {
 
         flightService.setFlightNumber();

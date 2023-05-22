@@ -1,5 +1,8 @@
 package org.nuvolar.service;
 
+/**
+ * This class checks the feasibility of flight after evaluating rule 1.
+ */
 public class FlightFeasibilityRule1 implements IFlightFeasibility {
 
     double maxFlightRange = 12000;

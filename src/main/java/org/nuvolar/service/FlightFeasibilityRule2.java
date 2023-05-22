@@ -2,6 +2,9 @@ package org.nuvolar.service;
 
 import java.time.LocalTime;
 
+/**
+ * This class checks the feasibility of flight after evaluating rule 2.
+ */
 public class FlightFeasibilityRule2 implements IFlightFeasibility {
 
     double maxFlightRange;

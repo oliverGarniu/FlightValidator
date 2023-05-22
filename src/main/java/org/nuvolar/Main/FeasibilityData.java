@@ -16,6 +16,11 @@ public class FeasibilityData {
         this.feasibilityMessage = feasibilityMessage;
     }
 
+    /**
+     * This method allows to check if a flight is feasible by introducing the distance as parameter.
+     *
+     * @param distance
+     */
     public void checkFeasibility(double distance) {
         boolean isRule1 = flightFeasibilityRule1.evaluateRule(distance);
         boolean isRule2 = flightFeasibilityRule2.evaluateRule(distance);

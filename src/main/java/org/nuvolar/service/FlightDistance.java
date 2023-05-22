@@ -10,9 +10,14 @@ import org.slf4j.LoggerFactory;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * This class allows to get flight distance after setting departure and arrival information.
+ */
 public class FlightDistance implements IFlightDistance {
 
+    // Logger class used to log application messages.
     private final Logger logger = LoggerFactory.getLogger(FlightService.class);
+
     String depLocation, arrLocation;
     double latitude1, longitude1, latitude2, longitude2, flightDistance;
     boolean isCorrectFormat = false;
@@ -38,6 +43,7 @@ public class FlightDistance implements IFlightDistance {
         Scanner sc = new Scanner(System.in);
         isCorrectFormat = false;
 
+        // Using try-catch to handle input exceptions.
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter " + depLocation.toUpperCase() + " airport´s latitude");
@@ -58,6 +64,7 @@ public class FlightDistance implements IFlightDistance {
         Scanner sc = new Scanner(System.in);
         isCorrectFormat = false;
 
+        // Using try-catch to handle input exceptions.
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter " + depLocation.toUpperCase() + " airport´s longitude");
@@ -89,6 +96,7 @@ public class FlightDistance implements IFlightDistance {
         Scanner sc = new Scanner(System.in);
         isCorrectFormat = false;
 
+        // Using try-catch to handle input exceptions.
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter " + arrLocation.toUpperCase() + " airport´s latitude");
@@ -109,6 +117,7 @@ public class FlightDistance implements IFlightDistance {
         Scanner sc = new Scanner(System.in);
         isCorrectFormat = false;
 
+        // Using try-catch to handle input exceptions.
         while (!isCorrectFormat) {
             try {
                 System.out.println("Enter " + arrLocation.toUpperCase() + " airport´s longitude");
