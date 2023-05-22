@@ -1,4 +1,4 @@
-package org.nuvolar.util;
+package org.checkmyflight.util;
 
 /**
  * Haversine formula is used to calculate the distance between airports,

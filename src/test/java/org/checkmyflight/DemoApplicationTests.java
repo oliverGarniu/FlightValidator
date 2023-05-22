@@ -1,4 +1,4 @@
-package org.nuvolar;
+package org.checkmyflight;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

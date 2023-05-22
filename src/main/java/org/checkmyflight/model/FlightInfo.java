@@ -1,4 +1,4 @@
-package org.nuvolar.model;
+package org.checkmyflight.model;
 
 import java.time.LocalTime;
 

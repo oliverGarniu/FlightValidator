@@ -1,8 +1,8 @@
-package org.nuvolar.service;
+package org.checkmyflight.service;
 
-import org.nuvolar.model.AirportLocation;
-import org.nuvolar.model.FlightInfo;
-import org.nuvolar.util.Haversine;
+import org.checkmyflight.model.AirportLocation;
+import org.checkmyflight.model.FlightInfo;
+import org.checkmyflight.util.Haversine;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

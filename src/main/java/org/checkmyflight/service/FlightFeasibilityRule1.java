@@ -1,4 +1,4 @@
-package org.nuvolar.service;
+package org.checkmyflight.service;
 
 /**
  * This class checks the feasibility of flight after evaluating rule 1.

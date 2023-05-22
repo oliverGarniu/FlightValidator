@@ -1,7 +1,7 @@
-package org.nuvolar.Main;
+package org.checkmyflight.Main;
 
-import org.nuvolar.service.FlightDistance;
-import org.nuvolar.service.FlightService;
+import org.checkmyflight.service.FlightDistance;
+import org.checkmyflight.service.FlightService;
 
 public class FlightData {
     FlightService flightService;

@@ -1,4 +1,4 @@
-package org.nuvolar.service;
+package org.checkmyflight.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

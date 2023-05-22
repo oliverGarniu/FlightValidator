@@ -1,6 +1,6 @@
-package org.nuvolar.Main;
+package org.checkmyflight.Main;
 
-import org.nuvolar.service.*;
+import org.checkmyflight.service.*;
 import org.springframework.boot.SpringApplication;
 
 public class Main {

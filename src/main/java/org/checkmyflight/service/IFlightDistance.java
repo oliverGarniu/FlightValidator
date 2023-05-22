@@ -1,4 +1,4 @@
-package org.nuvolar.service;
+package org.checkmyflight.service;
 
 public interface IFlightDistance {
 

@@ -1,8 +1,8 @@
-package org.nuvolar.Main;
+package org.checkmyflight.Main;
 
-import org.nuvolar.service.FeasibilityMessage;
-import org.nuvolar.service.FlightFeasibilityRule1;
-import org.nuvolar.service.FlightFeasibilityRule2;
+import org.checkmyflight.service.FeasibilityMessage;
+import org.checkmyflight.service.FlightFeasibilityRule1;
+import org.checkmyflight.service.FlightFeasibilityRule2;
 
 public class FeasibilityData {
 
