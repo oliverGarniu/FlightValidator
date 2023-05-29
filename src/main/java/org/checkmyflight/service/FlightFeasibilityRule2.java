@@ -50,6 +50,7 @@ public class FlightFeasibilityRule2 implements IFlightFeasibility {
     }
 
     public double getMaxFlightRange() {
+
         return maxFlightRange;
     }
 }

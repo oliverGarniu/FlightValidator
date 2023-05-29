@@ -6,10 +6,15 @@ import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * RULE 1:
+ * The maximum flight range of the airplane is 12.000 km, however, the number of passengers reduces this flight range.
+ * If the flight has more than 250 passengers then it can travel a maximum of 8.000 km.
+ */
 class FlightFeasibilityRule1Test {
 
     /*
-     * Testing flight between London and Los Angeles
+     * Testing Rule1 for flight between London and Los Angeles.
      * Distance between LONDON and LOS ANGELES = 8774.36 km.
      * passengers = 202; numPassengers = 250;
      * (passengers < numPassengers) --> maxFlightRange = 12000;
@@ -22,7 +27,7 @@ class FlightFeasibilityRule1Test {
         FlightService flightService = new FlightService();
         FlightDistance flightDistance = new FlightDistance(flightService);
 
-        flightService.flightNumber = "asd1231";
+        flightService.flightNumber = "LoLA1231";
         flightService.localTime = LocalTime.of(15, 44);
         flightService.passengers = 202;
 
@@ -39,7 +44,7 @@ class FlightFeasibilityRule1Test {
     }
 
     /*
-     * Testing flight between London and Los Angeles
+     * Testing Rule1 for flight between London and Los Angeles.
      * Distance between LONDON and LOS ANGELES = 8774.36 km.
      * passengers = 251; numPassengers = 250;
      * (passengers > numPassengers) --> maxFlightRange = 8000;
@@ -52,7 +57,7 @@ class FlightFeasibilityRule1Test {
         FlightService flightService = new FlightService();
         FlightDistance flightDistance = new FlightDistance(flightService);
 
-        flightService.flightNumber = "asd1231";
+        flightService.flightNumber = "LoLA2348";
         flightService.localTime = LocalTime.of(15, 44);
         flightService.passengers = 251;
 
